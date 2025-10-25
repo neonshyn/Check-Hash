@@ -1,3 +1,28 @@
+{
+MIT License
+
+Copyright (c) 2025 Paolo Di Stefano <neonshyn at proton dot me>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+}
+
+
 unit CheckHASH;
 
 interface
@@ -11,7 +36,6 @@ uses
   Vcl.ToolWin, System.Actions, Vcl.ActnList,
   Vcl.StdActns, System.IOUtils, IdHashMessageDigest, idHash, Vcl.Menus,
   Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.Buttons;
-// System.Skia, Vcl.Skia,
 
 type
   TfrmMain = class(TForm)
@@ -115,7 +139,6 @@ begin
       FileOpenMD5String.FileName := EmptyStr;
       FileOpen.FileName := EmptyStr
     end
-    // ShowMessage('Il file ' + ExtractFileName(FileOpen.fileName) + ' è integro.')
     else
     begin
       MessageBox(Handle, pchar('File ' + ExtractFileName(FileOpen.fileName) +
@@ -123,8 +146,7 @@ begin
         MB_ICONEXCLAMATION or MB_OK);
       btnCheckHash.Enabled := true;
       btnCheckHash.Caption := 'Compute &Hash';
-      // ShowMessage('Il file ' + ExtractFileName(FileOpen.fileName) + ' NON è integro o corrotto.')
-        edtChooseFile.Text := 'Double click here to choose file...';
+      edtChooseFile.Text := 'Double click here to choose file...';
       edtChooseHashString.Text := EmptyStr;
       FileOpenMD5String.FileName := EmptyStr;
       FileOpen.FileName := EmptyStr
@@ -164,13 +186,9 @@ procedure TfrmMain.edtChooseHashStringChange(Sender: TObject);
 begin
   if Length(edtChooseHashString.Text) = 0 then
   begin
-   // edtChooseHashString.Text :=
-     // 'Write Hash string or double click here to choose file';
     lblStringaHash.Caption := 'Hash string:';
     edtChooseHashString.Color := clWindow;
-
   end;
-
 end;
 
 procedure TfrmMain.edtChooseHashStringClick(Sender: TObject);
@@ -214,12 +232,9 @@ begin
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
-
 begin
-
   rdgrHash.Buttons[1].Enabled := false;
   rdgrHash.Buttons[2].Enabled := false;
-
 end;
 
 procedure TfrmMain.Help1Click(Sender: TObject);
@@ -228,10 +243,5 @@ begin
   StrPCopy(Indirizzo, 'https://github.com/neonshyn/Check-Hash');
   ShellExecute(Application.Handle, 'open', Indirizzo, nil, nil, SW_NORMAL)
 end;
-
-//procedure TfrmMain.test1Click(Sender: TObject);
-//begin
-//Application.terminate
-//end;
 
 end.
